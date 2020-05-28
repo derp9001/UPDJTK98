@@ -1,0 +1,7 @@
+Early (as of 2020/05/28) database of joystick for Win 9x auto-config.
+
+Because some of my plans require the ability to connect a joystick to the system without having a mouse of keyboard, I needed a way around the popup that ask you to click next when you connect an unrecognized device.
+
+Sending this file to C:\Windows\INF fix it, as the devices are now recognized (As long as they match one of the entry here)
+
+And has a bonus, it can be cold-updated, no need to boot the system to replace that file or to add another INFs!
