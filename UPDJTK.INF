@@ -1,0 +1,316 @@
+;; YayMuffins JOYSTICK Database
+;; To fix Win98 PnP controllers capacity
+;; Last edit: 2020/05/28 4:30AM CEST
+;;
+;; Notable missing:
+;; 8BitDo USB Switch Adapter > While it support using PS4/XBoxOne/WiiU controllers wirelessly using D-Input, mode switching is broken and difficult to make it work.
+;; Sony Dualshock 4 > It work fine when installed, but also is an USB Audio device too, this need to be taken care off first. 
+
+[Version]
+CatalogFile=joystick.cat
+layoutfile=layout.inf,layout1.inf,layout2.inf
+Signature="$CHICAGO$"
+Class=MEDIA
+ClassGUID={4d36e96c-e325-11ce-bfc1-08002be10318}
+provider=YayPonies
+
+[ClassInstall]
+Addreg=Class.AddReg
+
+[Class.AddReg]
+HKR,,,,%MediaClassName%
+HKR,,Icon,,"-1"
+HKR,,Installer,,mmci.dll
+
+[Manufacturer]
+%StdMfgName%=StdMfg
+%Logitech%=Logitech
+%Microntek%=Microntek
+%DragonRise%=DragonRise
+%Sony%=Sony
+%Buffalo%=Buffalo
+%Mayflash%=Mayflash
+%Generic%=Generic
+%Saitek%=Saitek
+
+
+[StdMfg]
+;
+; This is the compatible id for HID game devices;
+; it will be matched when the primary id is not recognized.
+;
+%HID_DEVICE_SYSTEM_GAME%=HIDGameDevice,HID_DEVICE_SYSTEM_GAME
+
+
+[Logitech]
+%USB\VID_046D&PID_C216.DeviceDesc%=LOGITECHDUALACTION, USB\VID_046d&PID_C216
+%USB\VID_046D&PID_C218.DeviceDesc%=F510, USB\VID_046D&PID_C218
+%USB\VID_046D&PID_C219.DeviceDesc%=F710, USB\VID_046D&PID_C219
+
+[Microntek]
+%USB\VID_0078&PID_0006.DeviceDesc%=MicronJTK, USB\VID_0078&PID_0006
+
+[DragonRise]
+%USB\VID_0079&PID_0006.DeviceDesc%=TwinShock, USB\VID_0079&PID_0006
+
+[Sony]
+%USB\VID_054C&PID_0CDA.DeviceDesc%=PSClassic, USB\VID_054C&PID_0CDA
+
+[Buffalo]
+%USB\VID_0583&PID_2060.DeviceDesc%=BuffSFCUSB, USB\VID_0583&PID_2060
+
+[Mayflash]
+%USB\VID_057E&PID_0337.DeviceDesc%=MayGCUSB, USB\VID_057E&PID_0337
+
+[Generic]
+%USB\VID_0810&PID_0001.DeviceDesc%=CNPS2USB, USB\VID_0810&PID_0001
+
+[Saitek]
+%USB\VID_06A3&PID_075C.DeviceDesc%=X52, USB\VID_06A3&PID_075C
+
+;---------------------------------------------------------------;
+
+[PreCopySection]
+HKR,,NoSetupUI,,1
+
+[DestinationDirs]
+MSJSTICK.CopyList = 11          ; LDID_SYS
+STDUSBJSTICK.CopyFiles = 10,system32\drivers
+STDUSBJSTICK.DelFiles = 11
+HIDGameDevice.Copy = 11         ; LDID_SYS
+
+;---------------------------------------------------------------;
+
+[MSJSTICK]
+LogConfig=BasicJoyStick.LC0,BasicJoystick.LC1
+CopyFiles=MSJSTICK.CopyList, GAMEPORT.CopyList
+AddReg=JOYSTICK.AddReg, MSJSTICK.AddReg
+UpdateInis=MSJSTICK.UpdateInis
+KnownFiles=MSJSTICK.KnownFiles
+
+[BasicJoyStick.LC0]
+ConfigPriority=HARDWIRED
+IOConfig=201-201(3ff::)
+
+[BasicJoyStick.LC1]
+ConfigPriority=HARDWIRED
+IOConfig=200-207(3ff::)
+
+
+;---------------------------------------------------------------;
+
+[LOGITECHDUALACTION]
+CopyFiles=STDUSBJSTICK.CopyFiles
+DelFiles=STDUSBJSTICK.DelFiles
+AddReg=LOGITECHDUALACTION.AddReg
+UpdateInis=MSJSTICK.UpdateInis
+KnownFiles=STDUSBJSTICK.KnownFiles
+
+[LOGITECHDUALACTION.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,"hidusb.sys,"
+HKLM,System\CurrentControlSet\Control\MediaProperties\PrivateProperties\Joystick\OEM\VID_046D&PID_C216,OEMName,,%USB\VID_046D&PID_C216.DeviceDesc%
+
+[MicronJTK]
+CopyFiles=STDUSBJSTICK.CopyFiles
+DelFiles=STDUSBJSTICK.DelFiles
+AddReg=MicronJTK.AddReg
+UpdateInis=MSJSTICK.UpdateInis
+KnownFiles=STDUSBJSTICK.KnownFiles
+
+[MicronJTK.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,"hidusb.sys,"
+HKLM,System\CurrentControlSet\Control\MediaProperties\PrivateProperties\Joystick\OEM\VID_0078&PID_0006,OEMName,,%USB\VID_0078&PID_0006.DeviceDesc%
+
+[TwinShock]
+CopyFiles=STDUSBJSTICK.CopyFiles
+DelFiles=STDUSBJSTICK.DelFiles
+AddReg=TwinShock.AddReg
+UpdateInis=MSJSTICK.UpdateInis
+KnownFiles=STDUSBJSTICK.KnownFiles
+
+[TwinShock.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,"hidusb.sys,"
+HKLM,System\CurrentControlSet\Control\MediaProperties\PrivateProperties\Joystick\OEM\VID_0078&PID_0006,OEMName,,%USB\VID_0078&PID_0006.DeviceDesc%
+
+[PSClassic]
+CopyFiles=STDUSBJSTICK.CopyFiles
+DelFiles=STDUSBJSTICK.DelFiles
+AddReg=PSClassic.AddReg
+UpdateInis=MSJSTICK.UpdateInis
+KnownFiles=STDUSBJSTICK.KnownFiles
+
+[PSClassic.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,"hidusb.sys,"
+HKLM,System\CurrentControlSet\Control\MediaProperties\PrivateProperties\Joystick\OEM\VID_0078&PID_0006,OEMName,,%USB\VID_0078&PID_0006.DeviceDesc%
+
+[BuffSFCUSB]
+CopyFiles=STDUSBJSTICK.CopyFiles
+DelFiles=STDUSBJSTICK.DelFiles
+AddReg=BuffSFCUSB.AddReg
+UpdateInis=MSJSTICK.UpdateInis
+KnownFiles=STDUSBJSTICK.KnownFiles
+
+[BuffSFCUSB.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,"hidusb.sys,"
+HKLM,System\CurrentControlSet\Control\MediaProperties\PrivateProperties\Joystick\OEM\VID_0583&PID_2060,OEMName,,%USB\VID_0583&PID_2060.DeviceDesc%
+
+[MayGCUSB]
+CopyFiles=STDUSBJSTICK.CopyFiles
+DelFiles=STDUSBJSTICK.DelFiles
+AddReg=MayGCUSB.AddReg
+UpdateInis=MSJSTICK.UpdateInis
+KnownFiles=STDUSBJSTICK.KnownFiles
+
+[MayGCUSB.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,"hidusb.sys,"
+HKLM,System\CurrentControlSet\Control\MediaProperties\PrivateProperties\Joystick\OEM\VID_057E&PID_0337,OEMName,,%USB\VID_057E&PID_0337.DeviceDesc%
+
+[CNPS2USB]
+CopyFiles=STDUSBJSTICK.CopyFiles
+DelFiles=STDUSBJSTICK.DelFiles
+AddReg=CNPS2USB.AddReg
+UpdateInis=MSJSTICK.UpdateInis
+KnownFiles=STDUSBJSTICK.KnownFiles
+
+[CNPS2USB.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,"hidusb.sys,"
+HKLM,System\CurrentControlSet\Control\MediaProperties\PrivateProperties\Joystick\OEM\VID_0810&PID_0001,OEMName,,%USB\VID_0810&PID_0001.DeviceDesc%
+
+[X52]
+CopyFiles=STDUSBJSTICK.CopyFiles
+DelFiles=STDUSBJSTICK.DelFiles
+AddReg=X52.AddReg
+UpdateInis=MSJSTICK.UpdateInis
+KnownFiles=STDUSBJSTICK.KnownFiles
+
+[X52.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,"hidusb.sys,"
+HKLM,System\CurrentControlSet\Control\MediaProperties\PrivateProperties\Joystick\OEM\VID_06A3&PID_075C,OEMName,,%USB\VID_06A3&PID_075C.DeviceDesc%
+
+[F510]
+CopyFiles=STDUSBJSTICK.CopyFiles
+DelFiles=STDUSBJSTICK.DelFiles
+AddReg=F510.AddReg
+UpdateInis=MSJSTICK.UpdateInis
+KnownFiles=STDUSBJSTICK.KnownFiles
+
+[F510.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,"hidusb.sys,"
+HKLM,System\CurrentControlSet\Control\MediaProperties\PrivateProperties\Joystick\OEM\VID_046D&PID_C218,OEMName,,%USB\VID_046D&PID_C218.DeviceDesc%
+
+[F710]
+CopyFiles=STDUSBJSTICK.CopyFiles
+DelFiles=STDUSBJSTICK.DelFiles
+AddReg=F710.AddReg
+UpdateInis=MSJSTICK.UpdateInis
+KnownFiles=STDUSBJSTICK.KnownFiles
+
+[F710.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,"hidusb.sys,"
+HKLM,System\CurrentControlSet\Control\MediaProperties\PrivateProperties\Joystick\OEM\VID_046D&PID_C219,OEMName,,%USB\VID_046D&PID_C219.DeviceDesc%
+
+
+;---------------------------------------------------------------;
+
+[STDUSBJSTICK.CopyFiles]
+hidusb.sys
+hidclass.sys
+hidparse.sys
+
+[STDUSBJSTICK.KnownFiles]
+hidusb.sys=safe
+
+[STDUSBJSTICK.DelFiles]
+hidusb.sys
+hidclass.sys
+hidparse.sys
+
+;---------------------------------------------------------------;
+
+[MSJSTICK.CopyList]
+vjoyd.vxd,,
+msjstick.drv,,
+
+[MSJSTICK.KnownFiles]
+essjoy.vxd.4.3.0=force
+essjoy.drv.4.3.0=force
+
+[JOYSTICK.AddReg]
+HKR,,DevLoader,,mmdevldr.vxd
+HKR,Drivers,MIGRATED,,0
+HKR,Drivers\joystick,,,
+
+[MSJSTICK.AddReg]
+HKR,,Driver,,vjoyd.vxd
+HKR,Drivers\joystick\msjstick.drv,Description,,%*PNPB02F.DeviceDesc%
+HKR,Drivers\joystick\msjstick.drv,Driver,,msjstick.drv
+HKR,Drivers,SubClasses,,"joystick"
+
+
+[MSJSTICK.UpdateInis]
+system.ini,drivers,"joystick="
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;  Install section for HID game devices  ;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[HIDGameDevice]
+CopyFiles=HIDGameDevice.Copy,MSJSTICK.CopyList
+AddReg=HIDGameDevice.AddReg
+KnownFiles=HIDGameDevice.KnownFiles
+
+[HIDGameDevice.Copy]
+joyhid.vxd
+
+[HIDGameDevice.KnownFiles]
+joyhid.vxd=safe
+
+[HIDGameDevice.AddReg]
+HKR,,DevLoader,,"*ntkern,mmdevldr.vxd"
+HKR,,NTMPDriver,,"joyhid.vxd"
+HKR,,Driver,,vjoyd.vxd
+HKR,Drivers\joystick\msjstick.drv,Driver,,msjstick.drv
+HKR,Drivers,SubClasses,,"joystick"
+HKR,Drivers,MIGRATED,,0
+HKR,Drivers\joystick,,,
+HKR,Drivers\joystick\msjstick.drv,Description,,%HID_DEVICE_SYSTEM_GAME%
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;---------------------------------------------------------------;
+
+[Strings]
+
+StdMfgName="(Standard game device)"
+Logitech="Logitech"
+Microntek="Microntek"
+DragonRise="DragonRise inc."
+Sony="Sony"
+Buffalo="Buffalo"
+Mayflash="Mayflash"
+Generic="Generic"
+Saitek="Saitek"
+
+USB\VID_046D&PID_C216.DeviceDesc="Logitech USB Dual Action"
+USB\VID_0078&PID_0006.DeviceDesc="Microntek Joystick"
+USB\VID_0079&PID_0006.DeviceDesc="DragonRise PC TWIN SHOCK Gamepad"
+USB\VID_054C&PID_0CDA.DeviceDesc="Sony Playstation Classic Controller"
+USB\VID_0583&PID_2060.DeviceDesc="Buffalo Classic USB Gamepad"
+USB\VID_057E&PID_0337.DeviceDesc="Mayflash Gamecube Controller Adapter for Wii U/PC/Switch"
+USB\VID_0810&PID_0001.DeviceDesc="Generic No-name PS2 Dualshock to USB Adapter"
+USB\VID_06A3&PID_075C.DeviceDesc="Saitek X52"
+USB\VID_046D&PID_C218.DeviceDesc="Logitech F510 Gamepad"
+USB\VID_046D&PID_C219.DeviceDesc="Logitech F710 Gamepad"
+
+HID_DEVICE_SYSTEM_GAME="HID-compliant game controller"
