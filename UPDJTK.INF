@@ -3,8 +3,10 @@
 ;; Last edit: 2020/05/28 4:30AM CEST
 ;;
 ;; Notable missing:
-;; 8BitDo USB Switch Adapter > While it support using PS4/XBoxOne/WiiU controllers wirelessly using D-Input, mode switching is broken and difficult to make it work.
-;; Sony Dualshock 4 > It work fine when installed, but also is an USB Audio device too, this need to be taken care off first. 
+;; 8BitDo USB Switch Adapter > While it support using PS4/XBoxOne/WiiU controllers wirelessly using D-Input, 
+;; mode switching is broken and difficult to make it work, if you plan to use it, you WILL require a mouse/kb anyway!
+;; Sony Dualshock 4 > It work fine when installed, but also is an USB Audio device too, this need to be taken care off first.
+;; 8BitDo NES30PRO > Do not support D-Input properly (No button 3, no matter what mode the pad is put into)
 
 [Version]
 CatalogFile=joystick.cat
