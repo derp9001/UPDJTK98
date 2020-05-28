@@ -1,7 +1,22 @@
 Early (as of 2020/05/28) database of joystick for Win 9x auto-config.
 
-Because some of my plans require the ability to connect a joystick to the system without having a mouse of keyboard, I needed a way around the popup that ask you to click next when you connect an unrecognized device.
+Because some of my plans require the ability to connect a joystick to the system without having a mouse or keyboard, I needed a way around the popup that ask you to click next when you connect an unrecognized device.
 
 Sending this file to C:\Windows\INF fix it, as the devices are now recognized (As long as they match one of the entry here)
 
 And has a bonus, it can be cold-updated, no need to boot the system to replace that file or to add another INFs!
+
+Support list:
+
+Logitech USB Dual Action/Logitech F310
+Microntek Joystick
+DragonRise PC TWIN SHOCK Gamepad
+Sony Playstation Classic Controller
+Buffalo Classic USB Gamepad
+Mayflash Gamecube Controller Adapter for Wii U/PC/Switch
+Generic No-name (VID 0810/PID 0001) PS2 Dualshock to USB Adapter
+Saitek X52
+Logitech F510 Gamepad
+Logitech F710 Gamepad
+
+This is NOT a driver, this is only a database of known device to ease detection of standard HID "DirectInput" devices, if your controller is not on the list and isn't an X-Input device, please make an issue stating the name/manufacturer/VID and PID, or fill this form: https://forms.gle/ywABRCNxiPzRCiuG8
