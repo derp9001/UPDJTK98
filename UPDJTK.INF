@@ -34,6 +34,7 @@ HKR,,Installer,,mmci.dll
 %Mayflash%=Mayflash
 %Generic%=Generic
 %Saitek%=Saitek
+%Nintendo%=Nintendo
 
 
 [StdMfg]
@@ -54,6 +55,8 @@ HKR,,Installer,,mmci.dll
 
 [DragonRise]
 %USB\VID_0079&PID_0006.DeviceDesc%=TwinShock, USB\VID_0079&PID_0006
+%USB\VID_0079&PID_0011.DeviceDesc%=InnextSnes, USB\VID_0079&PID_0011
+
 
 [Sony]
 %USB\VID_054C&PID_0CDA.DeviceDesc%=PSClassic, USB\VID_054C&PID_0CDA
@@ -66,9 +69,15 @@ HKR,,Installer,,mmci.dll
 
 [Generic]
 %USB\VID_0810&PID_0001.DeviceDesc%=CNPS2USB, USB\VID_0810&PID_0001
+%USB\VID_0810&PID_E501.DeviceDesc%=CNSat, USB\VID_0810&PID_E501
+
 
 [Saitek]
 %USB\VID_06A3&PID_075C.DeviceDesc%=X52, USB\VID_06A3&PID_075C
+
+[Nintendo]
+%USB\VID_06A3&PID_075C.DeviceDesc%=NSwitchPro, USB\VID_057E&PID_2009
+
 
 ;---------------------------------------------------------------;
 
@@ -135,7 +144,19 @@ KnownFiles=STDUSBJSTICK.KnownFiles
 [TwinShock.AddReg]
 HKR,,DevLoader,,*ntkern
 HKR,,NTMPDriver,,"hidusb.sys,"
-HKLM,System\CurrentControlSet\Control\MediaProperties\PrivateProperties\Joystick\OEM\VID_0078&PID_0006,OEMName,,%USB\VID_0078&PID_0006.DeviceDesc%
+HKLM,System\CurrentControlSet\Control\MediaProperties\PrivateProperties\Joystick\OEM\VID_0079&PID_0006,OEMName,,%USB\VID_0079&PID_0006.DeviceDesc%
+
+[InnextSnes]
+CopyFiles=STDUSBJSTICK.CopyFiles
+DelFiles=STDUSBJSTICK.DelFiles
+AddReg=InnextSnes.AddReg
+UpdateInis=MSJSTICK.UpdateInis
+KnownFiles=STDUSBJSTICK.KnownFiles
+
+[InnextSnes.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,"hidusb.sys,"
+HKLM,System\CurrentControlSet\Control\MediaProperties\PrivateProperties\Joystick\OEM\VID_0079&PID_0011,OEMName,,%USB\VID_0079&PID_0011.DeviceDesc%
 
 [PSClassic]
 CopyFiles=STDUSBJSTICK.CopyFiles
@@ -147,7 +168,7 @@ KnownFiles=STDUSBJSTICK.KnownFiles
 [PSClassic.AddReg]
 HKR,,DevLoader,,*ntkern
 HKR,,NTMPDriver,,"hidusb.sys,"
-HKLM,System\CurrentControlSet\Control\MediaProperties\PrivateProperties\Joystick\OEM\VID_0078&PID_0006,OEMName,,%USB\VID_0078&PID_0006.DeviceDesc%
+HKLM,System\CurrentControlSet\Control\MediaProperties\PrivateProperties\Joystick\OEM\VID_054C&PID_0CDA,OEMName,,%USB\VID_054C&PID_0CDA.DeviceDesc%
 
 [BuffSFCUSB]
 CopyFiles=STDUSBJSTICK.CopyFiles
@@ -185,6 +206,18 @@ HKR,,DevLoader,,*ntkern
 HKR,,NTMPDriver,,"hidusb.sys,"
 HKLM,System\CurrentControlSet\Control\MediaProperties\PrivateProperties\Joystick\OEM\VID_0810&PID_0001,OEMName,,%USB\VID_0810&PID_0001.DeviceDesc%
 
+[CNSat]
+CopyFiles=STDUSBJSTICK.CopyFiles
+DelFiles=STDUSBJSTICK.DelFiles
+AddReg=CNPS2USB.AddReg
+UpdateInis=MSJSTICK.UpdateInis
+KnownFiles=STDUSBJSTICK.KnownFiles
+
+[CNSat.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,"hidusb.sys,"
+HKLM,System\CurrentControlSet\Control\MediaProperties\PrivateProperties\Joystick\OEM\VID_0810&PID_E501,OEMName,,%USB\VID_0810&PID_E501.DeviceDesc%
+
 [X52]
 CopyFiles=STDUSBJSTICK.CopyFiles
 DelFiles=STDUSBJSTICK.DelFiles
@@ -220,6 +253,19 @@ KnownFiles=STDUSBJSTICK.KnownFiles
 HKR,,DevLoader,,*ntkern
 HKR,,NTMPDriver,,"hidusb.sys,"
 HKLM,System\CurrentControlSet\Control\MediaProperties\PrivateProperties\Joystick\OEM\VID_046D&PID_C219,OEMName,,%USB\VID_046D&PID_C219.DeviceDesc%
+
+[NSwitchPro]
+CopyFiles=STDUSBJSTICK.CopyFiles
+DelFiles=STDUSBJSTICK.DelFiles
+AddReg=NSwitchPro.AddReg
+UpdateInis=MSJSTICK.UpdateInis
+KnownFiles=STDUSBJSTICK.KnownFiles
+
+[NSwitchPro.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,"hidusb.sys,"
+HKLM,System\CurrentControlSet\Control\MediaProperties\PrivateProperties\Joystick\OEM\VID_057E&PID_2009,OEMName,,%USB\VID_057E&PID_2009.DeviceDesc%
+
 
 
 ;---------------------------------------------------------------;
@@ -307,6 +353,7 @@ Saitek="Saitek"
 USB\VID_046D&PID_C216.DeviceDesc="Logitech USB Dual Action"
 USB\VID_0078&PID_0006.DeviceDesc="Microntek Joystick"
 USB\VID_0079&PID_0006.DeviceDesc="DragonRise PC TWIN SHOCK Gamepad"
+USB\VID_0079&PID_0011.DeviceDesc="DragonRise iNNEXT SNES Gamepad Clone"
 USB\VID_054C&PID_0CDA.DeviceDesc="Sony Playstation Classic Controller"
 USB\VID_0583&PID_2060.DeviceDesc="Buffalo Classic USB Gamepad"
 USB\VID_057E&PID_0337.DeviceDesc="Mayflash Gamecube Controller Adapter for Wii U/PC/Switch"
@@ -314,5 +361,7 @@ USB\VID_0810&PID_0001.DeviceDesc="Generic No-name PS2 Dualshock to USB Adapter"
 USB\VID_06A3&PID_075C.DeviceDesc="Saitek X52"
 USB\VID_046D&PID_C218.DeviceDesc="Logitech F510 Gamepad"
 USB\VID_046D&PID_C219.DeviceDesc="Logitech F710 Gamepad"
+USB\VID_057E&PID_2009.DeviceDesc="Nintendo Switch Pro Controller"
+USB\VID_0810&PID_E501.DeviceDesc="Generic No-name Saturn Pad Clone Controller
 
 HID_DEVICE_SYSTEM_GAME="HID-compliant game controller"
