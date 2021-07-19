@@ -349,6 +349,7 @@ Buffalo="Buffalo"
 Mayflash="Mayflash"
 Generic="Generic"
 Saitek="Saitek"
+Nintendo="Nintendo"
 
 USB\VID_046D&PID_C216.DeviceDesc="Logitech USB Dual Action"
 USB\VID_0078&PID_0006.DeviceDesc="Microntek Joystick"
