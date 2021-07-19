@@ -11,12 +11,15 @@ Support list:
 Logitech USB Dual Action/Logitech F310
 Microntek Joystick
 DragonRise PC TWIN SHOCK Gamepad
+DragonRise "iNNEXT SNES Clone" Gamepad
 Sony Playstation Classic Controller
 Buffalo Classic USB Gamepad
 Mayflash Gamecube Controller Adapter for Wii U/PC/Switch
 Generic No-name (VID 0810/PID 0001) PS2 Dualshock to USB Adapter
+Generic No-name (VID 0810/PID E501) Saturn USB Clone Gamepad
 Saitek X52
 Logitech F510 Gamepad
 Logitech F710 Gamepad
+Nintendo Switch Pro Controller
 
 This is NOT a driver, this is only a database of known device to ease detection of standard HID "DirectInput" devices, if your controller is not on the list and isn't an X-Input device, please make an issue stating the name/manufacturer/VID and PID, or fill this form: https://forms.gle/ywABRCNxiPzRCiuG8
